@@ -1,0 +1,47 @@
+name: Build and Patch Custom Iosevka
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'private-build-plans.toml'
+
+jobs:
+  build-and-patch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clone Iosevka source
+        run: git clone --depth 1 https://github.com/be5invis/Iosevka.git iosevka-build
+
+      - name: Copy build plan
+        run: cp private-build-plans.toml iosevka-build/
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies and build Iosevka
+        working-directory: ./iosevka-build
+        run: |
+          npm install
+          npm run build -- contents::IosevkaCustom
+
+      - name: Patch with Nerd Fonts
+        run: |
+          mkdir -p patched_fonts
+          docker run --rm \
+            -v ${{ github.workspace }}/iosevka-build/dist/IosevkaCustom/ttf:/in \
+            -v ${{ github.workspace }}/patched_fonts:/out \
+            nerdfonts/patcher --complete --careful
+
+      - name: Upload Patched Fonts
+        uses: actions/upload-artifact@v4
+        with:
+          name: custom-iosevka-nerd-font
+          path: patched_fonts/*.ttf
+          retention-days: 7

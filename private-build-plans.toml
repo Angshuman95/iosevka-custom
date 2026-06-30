@@ -1,0 +1,78 @@
+[buildPlans.IosevkaCustom]
+family = "Iosevka Custom"
+spacing = "term"
+serifs = "sans"
+noCvSs = false
+exportGlyphNames = false
+
+  [buildPlans.IosevkaCustom.variants]
+  inherits = "ss05"
+
+    [buildPlans.IosevkaCustom.variants.design]
+    one = "no-base-flat-top-serif"
+    three = "flat-top-serifless"
+    six = "open-contour"
+    seven = "straight-serifless-crossbar"
+    nine = "open-contour"
+    zero = "slashed"
+    capital-i = "serifed"
+    capital-q = "crossing-curly-tailed"
+    capital-z = "straight-serifless-with-crossbar"
+    a = "double-storey-tailed"
+    f = "tailed"
+    g = "double-storey"
+    i = "tailed-serifed"
+    j = "serifed"
+    l = "tailed-serifed"
+    t = "flat-hook"
+    u = "tailed-motion-serifed"
+    v = "straight-motion-serifed"
+    w = "straight-almost-flat-top-motion-serifed"
+    y = "cursive-motion-serifed"
+    z = "straight-serifless-with-crossbar"
+    tilde = "low"
+    asterisk = "hex-high"
+    underscore = "low"
+    ascii-single-quote = "straight"
+    paren = "large-contour"
+    brace = "curly"
+    number-sign = "upright"
+    ampersand = "closed"
+    at = "threefold-tall"
+    dollar = "through"
+    cent = "through"
+    percent = "rings-continuous-slash-also-connected"
+    question = "smooth"
+
+  [buildPlans.IosevkaCustom.ligations]
+  inherits = "default-calt"
+
+[buildPlans.IosevkaCustom.weights.Regular]
+shape = 400
+menu = 400
+css = 400
+
+[buildPlans.IosevkaCustom.weights.Bold]
+shape = 700
+menu = 700
+css = 700
+
+[buildPlans.IosevkaCustom.weights.Heavy]
+shape = 900
+menu = 900
+css = 900
+
+[buildPlans.IosevkaCustom.widths.Normal]
+shape = 500
+menu = 5
+css = "normal"
+
+[buildPlans.IosevkaCustom.widths.Extended]
+shape = 600
+menu = 7
+css = "expanded"
+
+[buildPlans.IosevkaCustom.widths.UltraExtended]
+shape = 720
+menu = 9
+css = "ultra-expanded"
