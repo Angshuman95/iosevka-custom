@@ -12,7 +12,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Clone Iosevka source
         run: git clone --depth 1 https://github.com/be5invis/Iosevka.git iosevka-build
@@ -24,7 +24,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ttfautohint
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '24'
 
@@ -35,7 +35,7 @@ jobs:
           npm run build -- contents::IosevkaCustom
 
       - name: Upload Unpatched Fonts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: unpatched-iosevka
           path: iosevka-build/dist/IosevkaCustom/TTF/*.ttf
@@ -50,7 +50,7 @@ jobs:
             nerdfonts/patcher --complete --careful
 
       - name: Upload Patched Fonts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: custom-iosevka-nerd-font
           path: patched_fonts/*.ttf
