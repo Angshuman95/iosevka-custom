@@ -26,13 +26,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install dependencies and build Iosevka
         working-directory: ./iosevka-build
         run: |
           npm install
           npm run build -- contents::IosevkaCustom
+
+      - name: Upload Unpatched Fonts
+        uses: actions/upload-artifact@v4
+        with:
+          name: unpatched-iosevka
+          path: iosevka-build/dist/IosevkaCustom/ttf/*.ttf
+          retention-days: 7
 
       - name: Patch with Nerd Fonts
         run: |
